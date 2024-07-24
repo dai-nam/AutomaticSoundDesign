@@ -1,0 +1,27 @@
+https://github.com/Text-to-Audio/Make-An-Audio clonen
+
+Python 3.11 funktioniert nicht, Python 3.8 installiert in einer conda-Environment:
+conda create --name myenv python=3.8  
+
+Umgebung aktivieren.
+
+Eine CUDA Version installieren, der mit der installierten Pytorch-Version kompatibel ist:
+CUDA 12.1 für Pytorch 2.3.1
+
+per ChatGPT requirements.txt umschreiben lassen:
+torch==2.3.1+cu121
+torchvision>=0.14.0+cu121
+torchaudio>=0.13.0+cu121
+
+Achtung: ChatGPT  macht ==, aber nur mit >= funktioniert es
+
+
+pip install -r requirements.txt 
+
+Prompt ausführen.
+
+
+
+
+
+
