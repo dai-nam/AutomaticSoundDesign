@@ -73,4 +73,5 @@ crashlytics-build.properties
 
 
 Assets/TTA/useful_ckpts/
-
+Assets/TTA/cached_model.pkl
+Assets/TTA/cached_model.pkl.meta

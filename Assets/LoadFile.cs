@@ -3,23 +3,34 @@ using EasyButtons;
 using System.Collections.Generic;
 using System.Collections;
 using UnityEditor.Timeline;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 public class LoadFile : MonoBehaviour
 {
 
-    public List<AudioClip> audioClips  = new List<AudioClip>();
-    AudioSource audioSource;
+    List<AudioSource> audioSources;
+ 
 
     void Start()
     {
-        audioSource = gameObject.AddComponent<AudioSource>();
+        AudioSource[] existingAudiosources = GetComponents<AudioSource>();
+        foreach (AudioSource audioSource in existingAudiosources)
+        {
+            Destroy(audioSource);
+        }
+
+        audioSources = new List<AudioSource>();
     }
- 
+
+
     [Button]
     public void Load()
     {
-        audioSource.clip = null;
-        audioClips.Clear();
+        #if UNITY_EDITOR
+        AssetDatabase.Refresh();
+#endif
 
         AudioClip[] loadedClips = Resources.LoadAll<AudioClip>("");
 
@@ -31,8 +42,11 @@ public class LoadFile : MonoBehaviour
 
         foreach (AudioClip clip in loadedClips)
         {
-            audioClips.Add(clip);
-            Debug.Log("Loaded audio clip: " + clip.name);
+            AudioSource audioSource = gameObject.AddComponent<AudioSource>();
+            audioSources.Add(audioSource);
+            audioSource.clip = clip;
+            audioSource.playOnAwake = false;
+            audioSource.loop = true;
         }
 
     }
@@ -40,19 +54,10 @@ public class LoadFile : MonoBehaviour
     [Button]
     public void PlayAll()
     {
-        StartCoroutine(PlayClipsSequentially());
-    }
-
-    
-    IEnumerator PlayClipsSequentially()
-    {
-
-        foreach (AudioClip clip in audioClips)
-        {
-            print("Playing: "+clip.name);
-            audioSource.clip = clip;
+        foreach(AudioSource audioSource in audioSources)
+        {            
             audioSource.Play();
-            yield return new WaitForSeconds(audioSource.clip.length);
-        }
+        }        
     }
+    
 }

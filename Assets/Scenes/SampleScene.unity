@@ -293,7 +293,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9948c140c5f39345a28cb3f4c5738d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prompt: Elephant in water
+  prompt: 
 --- !u!4 &259930325
 Transform:
   m_ObjectHideFlags: 0
@@ -321,7 +321,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b572d203916dc3240bf945567d4c379d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioClips: []
 --- !u!1 &325656489
 GameObject:
   m_ObjectHideFlags: 0
@@ -352,19 +351,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 1854048910}
-  desc1: 
-  prompt: "Here are my instructions:\r I give you an image. Describe what is in the
-    image.\r Describe each thing one at a time in separate short sentences.\r Only
-    describe a maximum of the 2 most important things in the image.\r Name the item,
-    what the item is doing, and where applicable, what sound it is making. Only include
-    sentences where the item is making a sound.\r If the image indicates what sound
-    they are making, include it in the description.\r\nIf the image doesn't indicate
-    the sound, guess a typical fitting sound and include it in the description.\r
-    The description must be as short as possible (maximum of 4 words).\r Don't include
-    the context of the items and the rest of the image, just describe the items and
-    the sound they are making.  Give it back in a format where each sentence is separated
-    by a line break.  Don't include counting numbers before the sentences and a period
-    at the end of the sentences."
+  imgDescription: 
+  editedDescription: 
+  shouldEditGptResponse: 1
 --- !u!4 &325656491
 Transform:
   m_ObjectHideFlags: 0
@@ -641,7 +630,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd46249981462754baa2a50e729ef167, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  path: Assets\image.jpg
+  path: Assets\image3.jpg
 --- !u!4 &1854048912
 Transform:
   m_ObjectHideFlags: 0

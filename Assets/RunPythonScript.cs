@@ -23,7 +23,7 @@ public class RunPythonScript : MonoBehaviour
     [Button]
     public void SetPrompt()
     {
-        string tmp = FindObjectOfType<ImageToGPT>().desc1;
+        string tmp = FindObjectOfType<ImageToGPT>().editedDescription;
         string[] lines = tmp.Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
 
         lines = lines.Where(s => !string.IsNullOrEmpty(s)).ToArray();
